@@ -1,40 +1,5 @@
-document.querySelector("#getText").addEventListener("click", getText);
-document.querySelector("#getUsers").addEventListener("click", getUsers);
 document.querySelector("#getPosts").addEventListener("click", getPosts);
 document.querySelector("#addPost").addEventListener("submit", addPost);
-
-// fetching text file locally
-
-function getText() {
-  fetch("../json/sample.txt")
-    .then((response) => response.text())
-    .then((data) => {
-      document.querySelector("#output").innerHTML = data;
-    })
-    .catch((err) => console.log(err));
-}
-
-// fetching json file locally
-
-function getUsers() {
-  fetch("../json/users.json")
-    .then((response) => response.json())
-    .then((users) => {
-      let output = "<h2 class='my-4'>Users</h2>";
-      users.forEach((user) => {
-        output += `
-        <div>
-          <ul class="list-group my-4">
-            <li class="list-group-item bg-light">ID : ${user.id}</li>
-            <li class="list-group-item">Name : ${user.name}</li>
-            <li class="list-group-item">Email : ${user.email}</li>
-          </ul>
-        </div>
-        `;
-      });
-      document.querySelector("#output").innerHTML = output;
-    });
-}
 
 // fetching json from an API
 
